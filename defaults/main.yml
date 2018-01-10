@@ -1,0 +1,7 @@
+---
+required_packages: ['epel-release', 'vim', 'git', 'wget', 'gcc', 'perl-core']
+gnu_project: "m4"
+gnu_project_version: "1.4.18"
+gnu_url: "http://ftp.gnu.org/gnu/{{ gnu_project }}/"
+compiling_path: '/home/sources'
+gnu_install_dir: '/usr'
