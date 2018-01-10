@@ -1,2 +1,8 @@
 ---
-# tasks file for install-gnu
+####################################
+# Install GNU software from source #
+####################################
+- include_tasks: Redhat/redhat_prerequisites.yml
+  when: ansible_os_family == "RedHat"
+
+- include_tasks: Common/install_gnu_project.yml
