@@ -3,3 +3,10 @@
 # Install GNU software from source #
 ####################################
 - include_tasks: Common/install_gnu_project.yml
+  when: install| bool
+
+######################################
+# Uninstall GNU software from source #
+######################################
+- include_tasks: Common/uninstall_gnu_project.yml
+  when: uninstall| bool

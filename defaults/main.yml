@@ -1,4 +1,6 @@
 ---
+install: false
+uninstall: false
 gnu_project: "m4"
 gnu_project_version: "1.4.18"
 gnu_url: "http://ftp.gnu.org/gnu/{{ gnu_project }}/"
