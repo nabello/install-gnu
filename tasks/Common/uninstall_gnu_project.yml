@@ -1,10 +1,12 @@
 ---
 # Make sure necessary directories exist
 - file:
-    path: "{{ item }}"
+    path: "{{ file_item }}"
     state: directory
   with_items:
     - "{{ compiling_path }}"
+  loop_control:
+      loop_var: file_item
 
 # Download GNU project
 - name: "Download GNU {{ gnu_project }} project"
@@ -21,17 +23,21 @@
 
 # Configure & Make GNU project
 - name: "Configure & Make {{ gnu_project }} GNU project"
-  command: "{{ item }}"
+  command: "{{ cmd_item }}"
   args:
     chdir: "{{ compiling_path }}/{{ gnu_project }}-{{ gnu_project_version }}"
   with_items:
     - "./configure --prefix={{ gnu_install_dir }}"
     - "make"
     - "make uninstall"
+  loop_control:
+      loop_var: cmd_item
 
 # Clean up
 - file:
-    path: "{{ item }}"
+    path: "{{ clean_item }}"
     state: absent
   with_items:
     - "{{ compiling_path }}"
+  loop_control:
+      loop_var: clean_item
